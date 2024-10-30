@@ -2,7 +2,7 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const { sql } = require('../db/db');
-
+require('dotenv').config({path: '.env'})
 const router = express.Router();
 
 /**
@@ -21,7 +21,7 @@ const router = express.Router();
  *               email:
  *                 type: string
  *                 example: usuario@example.com
- *               password:
+ *               user_password:
  *                 type: string
  *                 example: 123456
  *     responses:
@@ -62,19 +62,19 @@ router.post('/', async (req, res) => {
 
     const user = result.recordset[0];
     // Verifica la contraseña
-    const isPasswordValid = bcrypt.compareSync(password, user.password);
+    const isPasswordValid = bcrypt.compareSync(password, user.user_password);
     if (!isPasswordValid) {
       return res.status(401).json({ message: 'Credenciales incorrectas' });
     }
 
-    // Crea el JWT incluyendo el rol y el id del usuario
+    // Crea el JWT incluyendo el rol del usuario
     const token = jwt.sign(
       { id: user.id, email: user.email, rol: user.rol },
-      'tu_clave_secreta',
+      process.env.JWT_SECRET,
       { expiresIn: '1h' }
     );
 
-    // Devuelve el token el rol y el id
+    // Devuelve el token, el rol y el id
     return res.status(200).json({ token, rol: user.rol, id: user.id });
   } catch (error) {
     console.error('Error en el inicio de sesión:', error);

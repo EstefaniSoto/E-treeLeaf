@@ -101,7 +101,7 @@ router.get('/:id', async (req, res) => {
  *                 type: integer
  *               imagen:
  *                 type: string
- *               password:
+ *               user_password:
  *                 type: string
  *     responses:
  *       201:
@@ -118,7 +118,7 @@ router.post('/', upload.single('imagen'), async (req, res) => {
         const imageBuffer = req.file ? req.file.buffer.toString('base64') : null; 
         
         // Inserta el nuevo usuario en la base de datos
-        await sql.query`INSERT INTO usuarios (nombre, email, tel, puesto_id, rol, departamento_id, jefe_directo_id, subordinado_id, imagen, password) 
+        await sql.query`INSERT INTO usuarios (nombre, email, tel, puesto_id, rol, departamento_id, jefe_directo_id, subordinado_id, imagen, user_password) 
                         VALUES (${nombre}, ${email}, ${tel}, ${puesto_id}, ${rol}, ${departamento_id}, ${jefe_directo_id}, ${subordinado_id}, ${imageBuffer}, ${hashedPassword})`;
         res.status(201).send('Usuario creado');
     } catch (err) {
