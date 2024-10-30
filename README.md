@@ -59,7 +59,8 @@ Asegúrate de tener la base de datos definida en SQL Server, junto con las tabla
 
 ```sql
 -- Crear la base de datos eTreeLeaf
-CREATE DATABASE eTreeLeaf;
+CREATE DATABASE eTreeLeaf
+
 GO
 
 -- Usar la base de datos eTreeLeaf
@@ -90,7 +91,7 @@ CREATE TABLE Usuarios (
     departamento_id INT,
     jefe_directo_id INT,
     subordinado_id INT,
-    imagen NVARCHAR(255),
+    imagen NVARCHAR(MAX),
     FOREIGN KEY (puesto_id) REFERENCES Puestos(id),
     FOREIGN KEY (departamento_id) REFERENCES Departamentos(id),
     FOREIGN KEY (jefe_directo_id) REFERENCES Usuarios(id),
@@ -112,12 +113,21 @@ INSERT INTO Puestos (nombre) VALUES
 -- Inserción de datos iniciales en Usuarios
 INSERT INTO Usuarios (nombre, email, user_password, tel, puesto_id, rol, departamento_id, jefe_directo_id, subordinado_id)
 VALUES 
-('Juan Pérez', 'juan.perez@example.com', 'password123', '1234567890', 1, 'Basico', 2, NULL, NULL),
-('Ana Gómez', 'ana.gomez@example.com', 'admin123', '0987654321', 2, 'Administrador', 1, NULL, 1),
-('Carlos López', 'carlos.lopez@example.com', 'vendedor123', '1122334455', 3, 'Basico', 3, 2, NULL);
-
+('Ana Gómez', 'ana.gomez@example.com', '$2a$10$IJdedWL9RsFkHGt5tEutjOQVAmewLdA8aPbDeauk/ty0Uu/k3StG.', '0987654321', 2, 'Administrador', 2, NULL, NULL),
+('Debian', 'debian@gmail.com', '$2a$10$XrO17BS3FaKex3nxxMrNv.p33whC8TFwO.jCypZNiKocEynrGpR/6', '1234567890', 1, 'Basico', 1, 1, NULL);
 
 ```
+## Importante
+
+- Las contraseñas iniciales para los usuarios son las siguientes:
+  - **ana.gomez@example.com**: `admin123`
+  - **debian@gmail.com**: `123`
+
+- Algunos usuarios iniciarán sin subordinados y sin jefe directo.
+
+- Los usuarios inicialmente aparecerán sin fotos. Sin embargo, los usuarios creados posteriormente podrán ser registrados con imágenes.
+
+
 ## Ejecución
 
 Para ejecutar el backend, utiliza el siguiente comando:
