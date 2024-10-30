@@ -122,3 +122,74 @@ La documentación de la API se genera automáticamente utilizando Swagger. Puede
 [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
 
 Esta documentación proporciona detalles sobre los endpoints disponibles, sus métodos y las estructuras de datos esperadas.
+
+## Frontend
+
+### Descripción del Frontend
+
+Este proyecto es la interfaz de usuario para la intranet corporativa, donde los administradores pueden gestionar usuarios, departamentos y puestos. La aplicación está desarrollada utilizando React y se conecta a un backend que maneja la lógica de negocio y la base de datos.
+
+### Tecnologías Utilizadas
+
+- **React**: Biblioteca de JavaScript para construir interfaces de usuario.
+- **Tailwind CSS**: Framework de CSS para estilos personalizados.
+- **Axios**: Cliente HTTP para realizar solicitudes a la API.
+- **Vite**: Herramienta de desarrollo que permite un arranque rápido y optimización de la construcción.
+
+### Dependencias
+
+Asegúrate de tener las siguientes dependencias en tu archivo `package.json`:
+
+```json
+"dependencies": {
+  "axios": "^1.7.7",
+  "react": "^18.3.1",
+  "react-dom": "^18.3.1",
+  "react-router-dom": "^6.27.0"
+},
+"devDependencies": {
+  "@eslint/js": "^9.13.0",
+  "@types/react": "^18.3.11",
+  "@types/react-dom": "^18.3.1",
+  "@vitejs/plugin-react-swc": "^3.5.0",
+  "autoprefixer": "^10.4.20",
+  "eslint": "^9.13.0",
+  "eslint-plugin-react": "^7.37.1",
+  "eslint-plugin-react-hooks": "^5.0.0",
+  "eslint-plugin-react-refresh": "^0.4.13",
+  "globals": "^15.11.0",
+  "postcss": "^8.4.47",
+  "tailwindcss": "^3.4.14",
+  "vite": "^5.4.9"
+}
+```
+## Hooks Utilizados
+
+En este proyecto, se utilizaron los siguientes hooks de React:
+
+- **useState**: Para manejar el estado de los componentes, como los datos del formulario y los errores.
+- **useEffect**: Para realizar efectos secundarios, como la obtención de datos al cargar el componente.
+- **useRef**: Para acceder a elementos DOM directamente, como el manejo de archivos de imagen.
+- **useCallback**: Para memorizar funciones que dependen de valores específicos, mejorando el rendimiento en componentes que renderizan frecuentemente.
+- **useMemo**: Para memorizar valores derivados que son costosos de calcular y dependen de otros valores en el estado.
+
+## Instrucciones de Instalación
+
+1. Clona el repositorio en tu máquina local:
+
+```bash
+git clone https:https://github.com/EstefaniSoto/E-treeLeaf.git
+```
+2. Navega a la carpeta del proyecto:
+```bash
+cd intranet-frontend
+```
+3. Instala las dependencias:
+```bash
+cd intranet-frontend
+```
+4. Inicia el servidor de desarrollo:
+```bash
+npm run dev
+```
+Abre tu navegador y visita [http://localhost:5173](http://localhost:5173) para ver la aplicación.
