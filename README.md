@@ -127,7 +127,20 @@ VALUES
 
 - Los usuarios inicialmente aparecerán sin fotos. Sin embargo, los usuarios creados posteriormente podrán ser registrados con imágenes.
 
+## Creación del Usuario Inicial
 
+Si prefieres crear el usuario inicial de 0 de manera manual, puedes usar un archivo que se encuentra en la carpeta `intranet-backend` llamado `hashPassword.js`. 
+
+### Pasos para crear el usuario:
+
+1. Accede al archivo `hashPassword.js`.
+2. Cambia la línea que dice `const password = 'tu_contraseña_admin';` por la contraseña que desees.
+3. Ejecuta el siguiente comando en tu terminal:
+
+   ```bash
+   node hashPassword.js
+   ```
+4. Copia y pega el resultado generado en el usuario que creaste inicialmente en SQL Server. Esto te permitirá establecer una contraseña encriptada para el usuario inicial en tu base de datos.
 ## Ejecución
 
 Para ejecutar el backend, utiliza el siguiente comando:
