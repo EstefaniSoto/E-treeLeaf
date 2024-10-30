@@ -54,6 +54,14 @@ JWT_SECRET=TU_SECRETO
 Asegúrate de tener la base de datos definida en SQL Server, junto con las tablas necesarias (Usuarios, Departamentos, Puestos). Utiliza el script SQL proporcionado para crear las tablas y agregar datos iniciales.
 
 ```sql
+-- Crear la base de datos eTreeLeaf
+CREATE DATABASE eTreeLeaf;
+GO
+
+-- Usar la base de datos eTreeLeaf
+USE eTreeLeaf;
+GO
+
 -- Crear tabla Departamentos
 CREATE TABLE Departamentos (
     id INT PRIMARY KEY IDENTITY(1,1),
@@ -73,7 +81,7 @@ CREATE TABLE Usuarios (
     email NVARCHAR(100) NOT NULL UNIQUE,
     tel NVARCHAR(15),
     puesto_id INT,
-    rol NVARCHAR(20) NOT NULL CHECK (rol IN ('básico', 'administrativo')),
+    rol NVARCHAR(20) NOT NULL,
     departamento_id INT,
     jefe_directo_id INT,
     subordinado_id INT,
@@ -102,6 +110,7 @@ VALUES
 ('Juan Pérez', 'juan.perez@example.com', '1234567890', 1, 'básico', 2),
 ('Ana Gómez', 'ana.gomez@example.com', '0987654321', 2, 'administrativo', 1),
 ('Carlos López', 'carlos.lopez@example.com', '1122334455', 3, 'básico', 3);
+
 
 ```
 ## Ejecución
