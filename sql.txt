@@ -1,0 +1,48 @@
+-- Crear tabla Departamentos
+CREATE TABLE Departamentos (
+    id INT PRIMARY KEY IDENTITY(1,1),
+    nombre NVARCHAR(100) NOT NULL
+);
+
+-- Crear tabla Puestos
+CREATE TABLE Puestos (
+    id INT PRIMARY KEY IDENTITY(1,1),
+    nombre NVARCHAR(100) NOT NULL
+);
+
+-- Crear tabla Usuarios
+CREATE TABLE Usuarios (
+    id INT PRIMARY KEY IDENTITY(1,1),
+    nombre NVARCHAR(100) NOT NULL,
+    email NVARCHAR(100) NOT NULL UNIQUE,
+    tel NVARCHAR(15),
+    puesto_id INT,
+    rol NVARCHAR(20) NOT NULL CHECK (rol IN ('básico', 'administrativo')),
+    departamento_id INT,
+    jefe_directo_id INT,
+    subordinado_id INT,
+    imagen NVARCHAR(255),
+    FOREIGN KEY (puesto_id) REFERENCES Puestos(id),
+    FOREIGN KEY (departamento_id) REFERENCES Departamentos(id),
+    FOREIGN KEY (jefe_directo_id) REFERENCES Usuarios(id),
+    FOREIGN KEY (subordinado_id) REFERENCES Usuarios(id)
+);
+
+-- Inserción de datos iniciales en Departamentos
+INSERT INTO Departamentos (nombre) VALUES
+('Recursos Humanos'),
+('Tecnología'),
+('Ventas');
+
+-- Inserción de datos iniciales en Puestos
+INSERT INTO Puestos (nombre) VALUES
+('Desarrollador'),
+('Gerente'),
+('Vendedor');
+
+-- Inserción de datos iniciales en Usuarios
+INSERT INTO Usuarios (nombre, email, tel, puesto_id, rol, departamento_id)
+VALUES 
+('Juan Pérez', 'juan.perez@example.com', '1234567890', 1, 'básico', 2),
+('Ana Gómez', 'ana.gomez@example.com', '0987654321', 2, 'administrativo', 1),
+('Carlos López', 'carlos.lopez@example.com', '1122334455', 3, 'básico', 3);
