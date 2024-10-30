@@ -23,9 +23,10 @@ CREATE TABLE Usuarios (
     id INT PRIMARY KEY IDENTITY(1,1),
     nombre NVARCHAR(100) NOT NULL,
     email NVARCHAR(100) NOT NULL UNIQUE,
+    user_password NVARCHAR(255) NOT NULL,
     tel NVARCHAR(15),
     puesto_id INT,
-    rol NVARCHAR(20) NOT NULL,
+    rol NVARCHAR(20) NOT NULL CHECK (rol IN ('Basico', 'Administrador')),
     departamento_id INT,
     jefe_directo_id INT,
     subordinado_id INT,
@@ -49,9 +50,8 @@ INSERT INTO Puestos (nombre) VALUES
 ('Vendedor');
 
 -- Inserción de datos iniciales en Usuarios
-INSERT INTO Usuarios (nombre, email, tel, puesto_id, rol, departamento_id)
+INSERT INTO Usuarios (nombre, email, user_password, tel, puesto_id, rol, departamento_id, jefe_directo_id, subordinado_id)
 VALUES 
-('Juan Pérez', 'juan.perez@example.com', '1234567890', 1, 'básico', 2),
-('Ana Gómez', 'ana.gomez@example.com', '0987654321', 2, 'administrativo', 1),
-('Carlos López', 'carlos.lopez@example.com', '1122334455', 3, 'básico', 3);
-
+('Juan Pérez', 'juan.perez@example.com', 'password123', '1234567890', 1, 'Basico', 2, NULL, NULL),
+('Ana Gómez', 'ana.gomez@example.com', 'admin123', '0987654321', 2, 'Administrador', 1, NULL, 1),
+('Carlos López', 'carlos.lopez@example.com', 'vendedor123', '1122334455', 3, 'Basico', 3, 2, NULL);
