@@ -31,7 +31,11 @@ El proyecto utiliza las siguientes dependencias:
 ```
 ## Instalación
 
-Para instalar todas las dependencias del proyecto, ejecuta el siguiente comando en el directorio raíz del proyecto:
+Navega a la carpeta del proyecto:
+```bash
+cd intranet-backend
+```
+Para instalar todas las dependencias del proyecto, ejecuta el siguiente comando:
 
 ```bash
 npm install
